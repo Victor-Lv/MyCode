@@ -17,10 +17,13 @@ package reflection;
 /**
  * User table bean
  */
-public class User {
+public class User implements java.io.Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private String userName;
 	private int age;
-	
+		
 	@Override
 	public String toString() {
 		return "User table[userName = " + userName +", age = " + age + "]"; 

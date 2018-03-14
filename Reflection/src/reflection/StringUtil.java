@@ -57,7 +57,7 @@ public class StringUtil {
 	/**
 	 * sql injection filter
 	 * 
-	 * Blog of java how to prevent sql injection£º
+	 * Blog of java how to prevent sql injection:
 	 * 		http://www.cnblogs.com/EasonJim/p/6223216.html
 	 * 		http://blog.csdn.net/jun0052/article/details/8541021
 	 * @param String to filter

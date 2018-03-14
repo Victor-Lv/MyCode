@@ -15,6 +15,7 @@
 package reflection;
 
 import java.lang.reflect.Method;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,24 +23,52 @@ import java.sql.Timestamp;
 
 public class DBService {
 
-    public static ResultSet queryRecord(String tableName, String userName) throws SQLException{
-        ResultSet result = null;
-        PreparedStatement psment = null;
+	//此处不负责维护 Connection / PreparedStatement / ResultSet 的关闭，而由调用者维护
+    public static ResultSet queryRecord(Connection conn, PreparedStatement psment, String tableName, String userName) throws SQLException{
+		
+    	if (conn == null) {
+			System.out.println("Error: Connection is null.");
+			throw new NullPointerException();
+		}
+    	
+    	ResultSet rSet = null;
         String sql = "select * from " + tableName + " where userName=?";
         
         System.out.println("Query sql: " + sql); 
-        psment = ConnectDB.conn.prepareStatement(sql);
+        psment = conn.prepareStatement(sql);
         psment.setString(1, StringUtil.sqlFilter(userName));
         //psment.setString(2, StringUtil.sqlFilter(segm2));
+        
         try {
-            result = psment.executeQuery();
+        	rSet = psment.executeQuery();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return rSet;
+    }
+
+	public static ResultSet queryRecord(Connection conn, PreparedStatement psment, String sql) throws SQLException{
+        
+		if (conn == null) {
+			System.out.println("Error: Connection is null.");
+			throw new NullPointerException();
+		}
+		
+		ResultSet rSet = null;
+        
+        System.out.println("Query sql: " + sql); 
+        psment = conn.prepareStatement(sql);
+        
+        try {
+        	rSet = psment.executeQuery();
         }catch (Exception e) {
             e.printStackTrace();
         }
             
-        return result;
+        return rSet;
     }
-    
+	
     /**
      * convert the record into target object
      * @param rs
