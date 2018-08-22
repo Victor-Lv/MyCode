@@ -21,6 +21,7 @@ public class SessionFactory {
     private static SqlSessionFactory sqlSessionFactory;
 
     static {
+        // introduce the datasource configuration file
         String resource = "mybatis/mybatis-config.xml";
         try {
             InputStream inputStream = Resources.getResourceAsStream(resource);

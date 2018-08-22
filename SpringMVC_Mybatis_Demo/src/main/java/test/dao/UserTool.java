@@ -18,7 +18,7 @@ import java.util.List;
 public class UserTool {
 
     public static void main(String arg[]) throws IOException {
-        User user1 = selectUserName(1);
+        User user1 = selectUser(1);
         System.out.println(user1.toString());
 
         System.out.println("Insert user: " + insertUser("Victor", "New York"));
@@ -39,29 +39,6 @@ public class UserTool {
             List<User> userList = session.selectList((String) "UserMapper.queryAll");
             if (null != userList) {
                 return userList;
-            } else {
-                System.out.println("Not found!");
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.rollback();
-            return null;
-        } finally {
-            session.close();
-        }
-    }
-
-    public static User selectUserName(int id) {
-        SqlSession session = SessionFactory.getSession();
-
-        System.out.println("Selecting user...");
-        try {
-
-            User user = (User)session.selectOne((String) "UserMapper.selectUserName", id);
-            if (null != user) {
-                System.out.println(user.toString());
-                return user;
             } else {
                 System.out.println("Not found!");
                 return null;

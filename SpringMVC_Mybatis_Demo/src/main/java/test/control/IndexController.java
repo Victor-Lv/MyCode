@@ -2,11 +2,7 @@ package test.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletResponse;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * @ClassName: IndexController
@@ -19,7 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 public class IndexController {
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/", method = GET)
     public String index() {
         System.out.println("Index controller");
         return "index";

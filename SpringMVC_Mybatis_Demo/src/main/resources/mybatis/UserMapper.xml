@@ -21,10 +21,6 @@
         WHERE id = #{id}
     </select>
 
-    <select id="selectUserName" parameterType="int" resultType="User">
-        SELECT name FROM User WHERE id = #{id}
-    </select>
-
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         insert into User (name, address)
                 VALUES (#{name}, #{address})
