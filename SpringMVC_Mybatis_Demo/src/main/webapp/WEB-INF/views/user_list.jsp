@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Just a simple demo: SpringMVC + Mybatis + SpringBoot</title>
+    <title>Just a simple demo: SpringMVC + Mybatis</title>
 </head>
 <body>
 <table>

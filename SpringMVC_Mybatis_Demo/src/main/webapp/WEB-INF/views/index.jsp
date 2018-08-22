@@ -10,10 +10,10 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Just a simple demo: SpringMVC + Mybatis + SpringBoot</title>
+    <title>Just a simple demo: SpringMVC + Mybatis</title>
 </head>
 <body>
-<h1>Just a simple demo: SpringMVC + Mybatis + SpringBoot</h1>
+<h1>Just a simple demo: SpringMVC + Mybatis</h1>
 
 <form action="/selectAllUser" method="post">
     <div>
