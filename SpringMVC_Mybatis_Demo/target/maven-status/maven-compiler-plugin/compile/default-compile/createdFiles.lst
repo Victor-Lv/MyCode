@@ -1,8 +1,0 @@
-test\dao\UserTool.class
-test\dao\SessionFactory.class
-test\control\IndexController.class
-test\control\UserController.class
-test\config\RootConfig.class
-test\config\AppInitializer.class
-test\config\WebConfig.class
-test\dao\User.class

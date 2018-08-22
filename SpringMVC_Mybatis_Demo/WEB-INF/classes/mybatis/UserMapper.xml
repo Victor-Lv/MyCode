@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+    <sql id="userList">id, name, address</sql>
+
+    <select id="queryAll" resultType="User">
+        SELECT 
+        <include refid="userList" />
+        FROM User
+        ORDER BY id ASC
+    </select>
+
+    <select id="selectUser" parameterType="int" resultType="User">
+        SELECT
+        <include refid="userList" />
+        FROM User
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectUserName" parameterType="int" resultType="User">
+        SELECT name FROM User WHERE id = #{id}
+    </select>
+
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into User (name, address)
+                VALUES (#{name}, #{address})
+    </insert>
+
+    <delete id="deleteUser" parameterType="int" >
+        DELETE FROM User WHERE id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE User set
+            name = #{name},
+            address = #{address}
+        where id = #{id}
+    </update>
+</mapper>
